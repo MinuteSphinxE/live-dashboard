@@ -15,6 +15,7 @@
 - **富展示标题**：隐私允许时展示你正在看/听/写什么（如"正在YouTube看「Minecraft Tutorial」喵~"）
 - **三级隐私系统**：SHOW / BROWSER / HIDE 三级窗口标题分类
 - **樱花花瓣动画**：20 片 CSS 动画花瓣，自然飘摇效果，尊重 `prefers-reduced-motion` 设置
+- **夜间模式**：当所有设备离线时（Monika 不在电脑前），页面自动切换为深紫色暗夜主题，樱花花瓣变为微弱发光的萤火效果，带有交错的呼吸动画；任一设备上线后自动恢复日间模式，过渡动画 1.2 秒
 - **时间线视图**：按日聚合的时间线，带时长计算和日期选择器
 - **时区感知**：前端发送时区偏移，后端正确查询本地日期
 - **多设备支持**：同时支持多台设备（Windows、Android）
@@ -345,6 +346,20 @@ Dockerfile 使用多阶段构建：第一阶段构建 Next.js 前端，第二阶
   --color-primary: #E8A0BF;      /* 主色调粉色（猫耳、花瓣、装饰） */
   --color-secondary: #88C9C9;    /* 辅助色青色 */
   --color-accent: #E8B86D;       /* 点缀色金色 */
+}
+```
+
+夜间模式颜色在 `body.night-mode` 中覆盖，默认为深紫色系：
+
+```css
+body.night-mode {
+  --color-cream: #1a1a2e;        /* 深蓝紫背景 */
+  --color-sakura-bg: #1e1e30;    /* 深紫樱花色调 */
+  --color-card: #242440;         /* 暗紫卡片背景 */
+  --color-border: #3a3a5c;       /* 柔和紫灰边框 */
+  --color-primary: #9b7bb8;      /* 淡紫主色调 */
+  --color-secondary: #5a8a8a;    /* 暗青辅助色 */
+  --color-accent: #b8944d;       /* 暖金点缀色 */
 }
 ```
 
