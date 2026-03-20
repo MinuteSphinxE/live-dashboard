@@ -5,18 +5,6 @@
 
 特色功能：带猫耳装饰的视觉小说风格对话框、中文戏剧化活动描述（如"正在B站划水摸鱼喵~"）、飘落的樱花花瓣动画，以及三级隐私系统保护敏感窗口标题。
 
-## 此 Fork 的贡献
-
-本 fork 基于 [Monika-Dream/live-dashboard](https://github.com/Monika-Dream/live-dashboard) 开发，在原项目基础上新增：
-
-| 内容 | 说明 |
-|------|------|
-| **macOS Agent** | `agents/macos/agent.py` — 使用 AppleScript 获取前台应用和窗口标题，支持电量上报和 launchd 开机自启 |
-| **后端 macOS 支持** | `types.ts` 新增 `macos` platform 类型；`auth.ts` 接受 macOS 设备令牌；`app-mapper.ts` + `app-names.json` 新增 macOS 进程名映射 |
-| **HTTP 支持** | Windows 和 macOS Agent 均支持 `http://` URL，方便内网或无域名部署 |
-| **一键启动脚本** | `start.sh` — 自动生成 token/密钥、安装依赖、构建前端、启动后端和 macOS Agent |
-| **多设备 Token** | 后端和 docker-compose 支持多设备并行上报（`DEVICE_TOKEN_1`、`DEVICE_TOKEN_2`……） |
-
 ## 主题分支
 
 本项目提供两个前端主题，可按喜好选择：
@@ -174,7 +162,7 @@ live-dashboard/
 │   │   ├── build.bat             # PyInstaller 打包
 │   │   └── install-task.bat      # Windows 计划任务自启动
 │   │
-│   ├── macos/                    # macOS Agent（此 fork 新增）
+│   ├── macos/                    # macOS Agent
 │   │   ├── agent.py              # 主脚本（AppleScript + psutil）
 │   │   ├── config.json           # 配置文件（已 gitignore）
 │   │   ├── config.json.example   # 配置模板
@@ -186,7 +174,7 @@ live-dashboard/
 │       └── module.prop           # 模块元数据
 │
 ├── deploy/nginx/                 # Nginx 配置示例
-├── start.sh                      # 一键本地启动脚本（此 fork 新增）
+├── start.sh                      # 一键本地启动脚本
 ├── Dockerfile                    # 多阶段构建（前端 + 后端）
 ├── docker-compose.yml            # 容器编排
 └── .env.example                  # 环境变量模板
@@ -203,8 +191,6 @@ live-dashboard/
 ```
 
 脚本自动完成：生成随机 token 和 HASH_SECRET、安装 Bun 依赖、构建前端、创建 macOS Agent venv、启动后端（端口 3000）和 macOS Agent。访问 `http://localhost:3000` 即可。
-
-> `start.sh` 为此 fork 新增，原项目无此脚本。
 
 ---
 
@@ -346,8 +332,6 @@ cp -r out/* ../backend/public/
 **AFK 检测**：`idle_threshold_seconds`（默认 300 秒）控制无操作阈值。超过该时间无键鼠输入后，Agent 切换为心跳模式（仍保持在线但不追踪窗口变化），用户返回后自动恢复。
 
 ### macOS Agent
-
-> 此 fork 新增，原项目不含 macOS 支持。
 
 **前置要求**：macOS 10.14+，Python 3.10+，允许终端访问辅助功能（或通过 Accessibility 授权）。
 
