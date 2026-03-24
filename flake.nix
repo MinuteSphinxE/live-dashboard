@@ -1,5 +1,5 @@
 {
-  description = "Bun + TypeScript + Njs Project Automation";
+  description = "Live-dashboard";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
